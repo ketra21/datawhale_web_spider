@@ -55,7 +55,7 @@ def parse_stock_table(url):
     return headers, data
 
 # 定义基础URL模板
-base_url = 'https://vip.stock.finance.sina.com.cn/q/go.php/vComStockHold/kind/jgcg/index.phtml?symbol=%D6%A4%C8%AF%BC%F2%B3%C6%BB%F2%B4%FA%C2%EB&reportdate=2024&quarter=1&p={}'
+base_url = 'https://vip.stock.finance.sina.com.cn/q/go.php/vComStockHold/kind/jgcg/index.phtml?symbol=%D6%A4%C8%AF%BC%F2%B3%C6%BB%F2%B4%FA%C2%EB&reportdate={date}&quarter={q}&p={p}'
 
 # 初始化一个空的DataFrame来存储所有数据
 all_df = pd.DataFrame()
@@ -65,7 +65,7 @@ page = 1
 while True:
     if page >6:
         break
-    url = base_url.format(page)
+    url = base_url.format(date=2024,q=1,p=page)
     headers, data = parse_stock_table(url)
 
     # 检查数据有效性
